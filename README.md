@@ -2,7 +2,7 @@
 
 sweet-factory-backend-serverless
 
-documentation: <>
+documentation: <https://documenter.getpostman.com/view/3827865/Tzm2Jy4m>
 
 api url: <>
 

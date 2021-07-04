@@ -1,0 +1,80 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model ar_internal_metadata {
+  key        String   @id
+  value      String?
+  created_at DateTime
+  updated_at DateTime
+}
+
+model cities {
+  id         Int        @id @default(autoincrement())
+  city_name  String?
+  area       String?
+  zone_id    Int?
+  created_at DateTime
+  updated_at DateTime
+  zones      zones?     @relation(fields: [zone_id], references: [id])
+  machines   machines[]
+  products   products[]
+
+  @@index([zone_id], name: "fk_rails_f8d2792419")
+}
+
+model machines {
+  id            Int        @id @default(autoincrement())
+  machine_name  String?
+  serial_number Int?
+  city_id       Int?
+  created_at    DateTime
+  updated_at    DateTime
+  cities        cities?    @relation(fields: [city_id], references: [id])
+  products      products[]
+
+  @@index([city_id], name: "fk_rails_d74b7fc4ce")
+}
+
+model products {
+  id                  Int       @id @default(autoincrement())
+  product_name        String?
+  product_description String?
+  price               Float?
+  quantity            Int?
+  machine_id          Int?
+  city_id             Int?
+  created_at          DateTime
+  updated_at          DateTime
+  cities              cities?   @relation(fields: [city_id], references: [id])
+  machines            machines? @relation(fields: [machine_id], references: [id])
+
+  @@index([city_id], name: "fk_rails_391685e1f6")
+  @@index([machine_id], name: "fk_rails_87758910ea")
+}
+
+model schema_migrations {
+  version String @id
+}
+
+model users {
+  id         Int      @id @default(autoincrement())
+  email      String?
+  password   String?
+  created_at DateTime
+  updated_at DateTime
+}
+
+model zones {
+  id         Int      @id @default(autoincrement())
+  zone_name  String?
+  created_at DateTime
+  updated_at DateTime
+  cities     cities[]
+}

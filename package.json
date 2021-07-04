@@ -1,0 +1,69 @@
+{
+  "name": "sweet-factory-backend-serverless",
+  "version": "0.1.0",
+  "main": "app.js",
+  "repository": "https://github.com/yeukfei02/sweet-factory-backend-serverless.git",
+  "author": "Donald Wu <yeukfei02@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "2.16.1",
+    "apollo-server-lambda": "^2.25.2",
+    "aws-sdk": "^2.939.0",
+    "aws-xray-sdk": "^3.3.3",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "graphql": "^15.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/aws-sdk": "^2.7.0",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/jsonwebtoken": "^8.5.3",
+    "@types/lodash": "^4.14.170",
+    "@types/node": "^16.0.0",
+    "@types/serverless": "^1.78.29",
+    "@types/uuid": "^8.3.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1",
+    "apollo-server": "^2.25.2",
+    "apollo-server-testing": "^2.25.2",
+    "codecov": "^3.8.2",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "7.2.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "git-cz": "^4.7.6",
+    "husky": "^7.0.0",
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2",
+    "prisma": "2.16.1",
+    "serverless": "^2.50.0",
+    "serverless-offline": "^7.0.0",
+    "serverless-plugin-typescript": "^1.1.9",
+    "serverless-prune-plugin": "^1.5.0",
+    "standard-version": "^9.3.0",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
+  },
+  "scripts": {
+    "dev": "serverless offline start",
+    "deploy": "serverless deploy",
+    "dashboard": "serverless dashboard",
+    "remove": "serverless remove",
+    "test": "jest --detectOpenHandles",
+    "lint": "eslint '*/**/*.{ts,tsx}' --quiet --fix",
+    "generate:prisma": "cd ./prisma && npx prisma introspect && npx prisma generate",
+    "format:prisma": "cd ./prisma && npx prisma format",
+    "prisma-studio": "npx prisma studio",
+    "commit": "git-cz",
+    "release": "standard-version"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn run format:prisma",
+      "pre-push": "yarn lint && yarn run format:prisma"
+    }
+  }
+}

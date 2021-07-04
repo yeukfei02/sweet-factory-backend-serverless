@@ -4,7 +4,7 @@ sweet-factory-backend-serverless
 
 documentation: <https://documenter.getpostman.com/view/3827865/Tzm2Jy4m>
 
-api url: <>
+api url: <https://ccvwi4h6vk.execute-api.ap-southeast-1.amazonaws.com/prod/>
 
 ## Requirement
 

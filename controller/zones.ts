@@ -5,8 +5,8 @@ export const createZonesControllerFunc = async (parent: any, args: any, context:
   let response = {};
 
   const token = context.token;
-  const isTokenValid = validateJwtToken(token);
-  if (isTokenValid) {
+  const errorMessage = validateJwtToken(token);
+  if (!errorMessage) {
     const zoneNameInput = args.input.zone_name;
     if (zoneNameInput) {
       await createZones(zoneNameInput);
@@ -16,7 +16,7 @@ export const createZonesControllerFunc = async (parent: any, args: any, context:
     }
   } else {
     response = {
-      message: 'Unauthorized, please check request authorization header',
+      message: errorMessage,
     };
   }
 
@@ -27,8 +27,8 @@ export const getZonesControllerFunc = async (parent: any, args: any, context: an
   let response = {};
 
   const token = context.token;
-  const isTokenValid = validateJwtToken(token);
-  if (isTokenValid) {
+  const errorMessage = validateJwtToken(token);
+  if (!errorMessage) {
     const zones = await getZones();
     if (zones) {
       response = {
@@ -43,7 +43,7 @@ export const getZonesControllerFunc = async (parent: any, args: any, context: an
     }
   } else {
     response = {
-      message: 'Unauthorized, please check request authorization header',
+      message: errorMessage,
     };
   }
 
@@ -54,8 +54,8 @@ export const getZoneByIdControllerFunc = async (parent: any, args: any, context:
   let response = {};
 
   const token = context.token;
-  const isTokenValid = validateJwtToken(token);
-  if (isTokenValid) {
+  const errorMessage = validateJwtToken(token);
+  if (!errorMessage) {
     const idInput = args.id;
     if (idInput) {
       const zone = await getZoneById(idInput);
@@ -71,7 +71,7 @@ export const getZoneByIdControllerFunc = async (parent: any, args: any, context:
     }
   } else {
     response = {
-      message: 'Unauthorized, please check request authorization header',
+      message: errorMessage,
     };
   }
 

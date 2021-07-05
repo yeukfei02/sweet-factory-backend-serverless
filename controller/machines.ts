@@ -5,8 +5,8 @@ export const createMachinesControllerFunc = async (parent: any, args: any, conte
   let response = {};
 
   const token = context.token;
-  const isTokenValid = validateJwtToken(token);
-  if (isTokenValid) {
+  const errorMessage = validateJwtToken(token);
+  if (!errorMessage) {
     const machineNameInput = args.input.machine_name;
     const serialNumberInput = args.input.serial_number;
     const cityIdInput = args.input.city_id;
@@ -18,7 +18,7 @@ export const createMachinesControllerFunc = async (parent: any, args: any, conte
     }
   } else {
     response = {
-      message: 'Unauthorized, please check request authorization header',
+      message: errorMessage,
     };
   }
 
@@ -29,8 +29,8 @@ export const getMachinesControllerFunc = async (parent: any, args: any, context:
   let response = {};
 
   const token = context.token;
-  const isTokenValid = validateJwtToken(token);
-  if (isTokenValid) {
+  const errorMessage = validateJwtToken(token);
+  if (!errorMessage) {
     const machines = await getMachines();
     if (machines) {
       const formattedMachines = machines.map((item: any, i: number) => {
@@ -53,7 +53,7 @@ export const getMachinesControllerFunc = async (parent: any, args: any, context:
     }
   } else {
     response = {
-      message: 'Unauthorized, please check request authorization header',
+      message: errorMessage,
     };
   }
 
@@ -64,8 +64,8 @@ export const getMachineByIdControllerFunc = async (parent: any, args: any, conte
   let response = {};
 
   const token = context.token;
-  const isTokenValid = validateJwtToken(token);
-  if (isTokenValid) {
+  const errorMessage = validateJwtToken(token);
+  if (!errorMessage) {
     const idInput = args.id;
     if (idInput) {
       const machine = await getMachineById(idInput);
@@ -85,7 +85,7 @@ export const getMachineByIdControllerFunc = async (parent: any, args: any, conte
     }
   } else {
     response = {
-      message: 'Unauthorized, please check request authorization header',
+      message: errorMessage,
     };
   }
 

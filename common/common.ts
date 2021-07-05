@@ -1,20 +1,18 @@
 import jwt from 'jsonwebtoken';
-export const validateJwtToken = (token: string): boolean => {
-  let validStatus = false;
+export const validateJwtToken = (token: string): string => {
+  let errorMessage = '';
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET ? process.env.JWT_SECRET : '');
     console.log('decoded = ', decoded);
 
-    if (decoded) {
-      validStatus = true;
-    } else {
-      validStatus = false;
+    if (!decoded) {
+      errorMessage = 'jwt verify error';
     }
   } catch (e) {
     console.log('error = ', e);
-    validStatus = false;
+    errorMessage = e.message.toString();
   }
 
-  return validStatus;
+  return errorMessage;
 };

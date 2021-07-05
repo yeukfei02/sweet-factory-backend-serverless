@@ -5,8 +5,8 @@ export const createCitiesControllerFunc = async (parent: any, args: any, context
   let response = {};
 
   const token = context.token;
-  const isTokenValid = validateJwtToken(token);
-  if (isTokenValid) {
+  const errorMessage = validateJwtToken(token);
+  if (!errorMessage) {
     const cityNameInput = args.input.city_name;
     const areaInput = args.input.area;
     const zoneIdInput = args.input.zone_id;
@@ -18,7 +18,7 @@ export const createCitiesControllerFunc = async (parent: any, args: any, context
     }
   } else {
     response = {
-      message: 'Unauthorized, please check request authorization header',
+      message: errorMessage,
     };
   }
 
@@ -29,8 +29,8 @@ export const getCitiesControllerFunc = async (parent: any, args: any, context: a
   let response = {};
 
   const token = context.token;
-  const isTokenValid = validateJwtToken(token);
-  if (isTokenValid) {
+  const errorMessage = validateJwtToken(token);
+  if (!errorMessage) {
     const cities = await getCities();
     if (cities) {
       const formattedCities = cities.map((item: any, i: number) => {
@@ -53,7 +53,7 @@ export const getCitiesControllerFunc = async (parent: any, args: any, context: a
     }
   } else {
     response = {
-      message: 'Unauthorized, please check request authorization header',
+      message: errorMessage,
     };
   }
 
@@ -64,8 +64,8 @@ export const getCityByIdControllerFunc = async (parent: any, args: any, context:
   let response = {};
 
   const token = context.token;
-  const isTokenValid = validateJwtToken(token);
-  if (isTokenValid) {
+  const errorMessage = validateJwtToken(token);
+  if (!errorMessage) {
     const idInput = args.id;
     if (idInput) {
       const city = await getCityById(idInput);
@@ -84,7 +84,7 @@ export const getCityByIdControllerFunc = async (parent: any, args: any, context:
     }
   } else {
     response = {
-      message: 'Unauthorized, please check request authorization header',
+      message: errorMessage,
     };
   }
 

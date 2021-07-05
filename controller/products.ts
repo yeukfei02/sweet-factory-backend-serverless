@@ -5,8 +5,8 @@ export const createProductsControllerFunc = async (parent: any, args: any, conte
   let response = {};
 
   const token = context.token;
-  const isTokenValid = validateJwtToken(token);
-  if (isTokenValid) {
+  const errorMessage = validateJwtToken(token);
+  if (!errorMessage) {
     const productNameInput = args.input.product_name;
     const productDescriptionInput = args.input.product_description;
     const priceInput = args.input.price;
@@ -35,7 +35,7 @@ export const createProductsControllerFunc = async (parent: any, args: any, conte
     }
   } else {
     response = {
-      message: 'Unauthorized, please check request authorization header',
+      message: errorMessage,
     };
   }
 
@@ -46,8 +46,8 @@ export const getProductsControllerFunc = async (parent: any, args: any, context:
   let response = {};
 
   const token = context.token;
-  const isTokenValid = validateJwtToken(token);
-  if (isTokenValid) {
+  const errorMessage = validateJwtToken(token);
+  if (!errorMessage) {
     const products = await getProducts();
     if (products) {
       const formattedProducts = products.map((item: any, i: number) => {
@@ -71,7 +71,7 @@ export const getProductsControllerFunc = async (parent: any, args: any, context:
     }
   } else {
     response = {
-      message: 'Unauthorized, please check request authorization header',
+      message: errorMessage,
     };
   }
 
@@ -82,8 +82,8 @@ export const getProductByIdControllerFunc = async (parent: any, args: any, conte
   let response = {};
 
   const token = context.token;
-  const isTokenValid = validateJwtToken(token);
-  if (isTokenValid) {
+  const errorMessage = validateJwtToken(token);
+  if (!errorMessage) {
     const idInput = args.id;
     if (idInput) {
       const product = await getProductById(idInput);
@@ -104,7 +104,7 @@ export const getProductByIdControllerFunc = async (parent: any, args: any, conte
     }
   } else {
     response = {
-      message: 'Unauthorized, please check request authorization header',
+      message: errorMessage,
     };
   }
 

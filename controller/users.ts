@@ -42,6 +42,7 @@ export const loginControllerFunc = async (parent: any, args: any, context: any, 
         response = {
           message: 'login',
           token: token,
+          user_id: usersFromDB.id,
         };
       } else {
         response = {

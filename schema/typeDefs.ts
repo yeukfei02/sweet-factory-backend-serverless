@@ -148,6 +148,7 @@ const typeDefs = gql`
   type LoginResult {
     message: String!
     token: String
+    user_id: Int
   }
 
   input SignupInput {

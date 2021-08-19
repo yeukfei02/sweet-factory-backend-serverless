@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/yeukfei02/sweet-factory-backend-serverless/compare/v0.1.3...v0.1.4) (2021-08-19)
+
+
+### Features
+
+* 🎸 add nexus lib ([869f428](https://github.com/yeukfei02/sweet-factory-backend-serverless/commit/869f428892ce84fc76dea55c1b319b4044c4c9b0))
+
 ### [0.1.3](https://github.com/yeukfei02/sweet-factory-backend-serverless/compare/v0.1.2...v0.1.3) (2021-07-31)
 
 

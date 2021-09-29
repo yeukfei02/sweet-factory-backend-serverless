@@ -56,8 +56,8 @@
     "remove": "serverless remove",
     "test": "jest --detectOpenHandles",
     "lint": "eslint '*/**/*.{ts,tsx}' --quiet --fix",
-    "generate:prisma": "cd ./prisma && npx prisma introspect && npx prisma generate",
-    "format:prisma": "cd ./prisma && npx prisma format",
+    "generate:prisma": "npx prisma introspect && npx prisma generate",
+    "format:prisma": "npx prisma format",
     "prisma-studio": "npx prisma studio",
     "commit": "git-cz",
     "release": "standard-version"

@@ -1,5 +1,5 @@
 import { createProducts, getProducts, getProductById } from '../services/products';
-import { validateJwtToken } from '../common/common';
+import { validateJwtToken } from '../helpers/helpers';
 
 export const createProductsControllerFunc = async (parent: any, args: any, context: any, info: any): Promise<any> => {
   let response = {};

@@ -1,5 +1,5 @@
 import { createCities, getCities, getCityById } from '../services/cities';
-import { validateJwtToken } from '../common/common';
+import { validateJwtToken } from '../helpers/helpers';
 
 export const createCitiesControllerFunc = async (parent: any, args: any, context: any, info: any): Promise<any> => {
   let response = {};

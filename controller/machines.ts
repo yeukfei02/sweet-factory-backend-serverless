@@ -1,5 +1,5 @@
 import { createMachines, getMachines, getMachineById } from '../services/machines';
-import { validateJwtToken } from '../common/common';
+import { validateJwtToken } from '../helpers/helpers';
 
 export const createMachinesControllerFunc = async (parent: any, args: any, context: any, info: any): Promise<any> => {
   let response = {};

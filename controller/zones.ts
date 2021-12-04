@@ -1,5 +1,5 @@
 import { createZones, getZones, getZoneById } from '../services/zones';
-import { validateJwtToken } from '../common/common';
+import { validateJwtToken } from '../helpers/helpers';
 
 export const createZonesControllerFunc = async (parent: any, args: any, context: any, info: any): Promise<any> => {
   let response = {};

@@ -3,126 +3,142 @@
  * Do not make changes to this file directly
  */
 
-
-
-
-
-
-
 declare global {
   interface NexusGen extends NexusGenTypes {}
 }
 
 export interface NexusGenInputs {
-  CreateCitiesInput: { // input type
+  CreateCitiesInput: {
+    // input type
     area: string; // String!
     city_name: string; // String!
     zone_id: number; // Int!
-  }
-  CreateMachinesInput: { // input type
+  };
+  CreateMachinesInput: {
+    // input type
     city_id: number; // Int!
     machine_name: string; // String!
     serial_number: number; // Int!
-  }
-  CreateProductsInput: { // input type
+  };
+  CreateProductsInput: {
+    // input type
     city_id: number; // Int!
     machine_id: number; // Int!
     price: number; // Float!
     product_description: string; // String!
     product_name: string; // String!
     quantity: number; // Int!
-  }
-  CreateZonesInput: { // input type
+  };
+  CreateZonesInput: {
+    // input type
     zone_name: string; // String!
-  }
-  LoginInput: { // input type
+  };
+  LoginInput: {
+    // input type
     email: string; // String!
     password: string; // String!
-  }
-  SignupInput: { // input type
+  };
+  SignupInput: {
+    // input type
     email: string; // String!
     password: string; // String!
-  }
+  };
 }
 
-export interface NexusGenEnums {
-}
+export interface NexusGenEnums {}
 
 export interface NexusGenScalars {
-  String: string
-  Int: number
-  Float: number
-  Boolean: boolean
-  ID: string
+  String: string;
+  Int: number;
+  Float: number;
+  Boolean: boolean;
+  ID: string;
 }
 
 export interface NexusGenObjects {
-  Cities: { // root type
+  Cities: {
+    // root type
     area?: string | null; // String
     city_name?: string | null; // String
     created_at?: string | null; // String
     id?: number | null; // Int
     updated_at?: string | null; // String
     zone?: NexusGenRootTypes['Zones'] | null; // Zones
-  }
-  CreateCitiesResult: { // root type
+  };
+  CreateCitiesResult: {
+    // root type
     message: string; // String!
-  }
-  CreateMachinesResult: { // root type
+  };
+  CreateMachinesResult: {
+    // root type
     message: string; // String!
-  }
-  CreateProductsResult: { // root type
+  };
+  CreateProductsResult: {
+    // root type
     message: string; // String!
-  }
-  CreateZonesResult: { // root type
+  };
+  CreateZonesResult: {
+    // root type
     message: string; // String!
-  }
-  GetCitiesResult: { // root type
+  };
+  GetCitiesResult: {
+    // root type
     cities?: Array<NexusGenRootTypes['Cities'] | null> | null; // [Cities]
     message: string; // String!
-  }
-  GetCityByIdResult: { // root type
+  };
+  GetCityByIdResult: {
+    // root type
     city?: NexusGenRootTypes['Cities'] | null; // Cities
     message: string; // String!
-  }
-  GetMachineByIdResult: { // root type
+  };
+  GetMachineByIdResult: {
+    // root type
     machine?: NexusGenRootTypes['Machines'] | null; // Machines
     message: string; // String!
-  }
-  GetMachinesResult: { // root type
+  };
+  GetMachinesResult: {
+    // root type
     machines?: Array<NexusGenRootTypes['Machines'] | null> | null; // [Machines]
     message: string; // String!
-  }
-  GetProductByIdResult: { // root type
+  };
+  GetProductByIdResult: {
+    // root type
     message: string; // String!
     product?: NexusGenRootTypes['Products'] | null; // Products
-  }
-  GetProductsResult: { // root type
+  };
+  GetProductsResult: {
+    // root type
     message: string; // String!
     products?: Array<NexusGenRootTypes['Products'] | null> | null; // [Products]
-  }
-  GetUsersByIdResult: { // root type
+  };
+  GetUsersByIdResult: {
+    // root type
     message: string; // String!
     user?: NexusGenRootTypes['Users'] | null; // Users
-  }
-  GetUsersResult: { // root type
+  };
+  GetUsersResult: {
+    // root type
     message: string; // String!
     users?: Array<NexusGenRootTypes['Users'] | null> | null; // [Users]
-  }
-  GetZonesByIdResult: { // root type
+  };
+  GetZonesByIdResult: {
+    // root type
     message: string; // String!
     zone?: NexusGenRootTypes['Zones'] | null; // Zones
-  }
-  GetZonesResult: { // root type
+  };
+  GetZonesResult: {
+    // root type
     message: string; // String!
     zones?: Array<NexusGenRootTypes['Zones'] | null> | null; // [Zones]
-  }
-  LoginResult: { // root type
+  };
+  LoginResult: {
+    // root type
     message: string; // String!
     token?: string | null; // String
     user_id?: number | null; // Int
-  }
-  Machines: { // root type
+  };
+  Machines: {
+    // root type
     city?: NexusGenRootTypes['Cities'] | null; // Cities
     created_at?: string | null; // String
     id?: number | null; // Int
@@ -130,9 +146,10 @@ export interface NexusGenObjects {
     products?: Array<NexusGenRootTypes['Products'] | null> | null; // [Products]
     serial_number?: number | null; // Int
     updated_at?: string | null; // String
-  }
+  };
   Mutation: {};
-  Products: { // root type
+  Products: {
+    // root type
     city?: NexusGenRootTypes['Cities'] | null; // Cities
     created_at?: string | null; // String
     id?: number | null; // Int
@@ -142,104 +159,122 @@ export interface NexusGenObjects {
     product_name?: string | null; // String
     quantity?: number | null; // Int
     updated_at?: string | null; // String
-  }
+  };
   Query: {};
-  SignupResult: { // root type
+  SignupResult: {
+    // root type
     message: string; // String!
-  }
-  Users: { // root type
+  };
+  Users: {
+    // root type
     created_at?: string | null; // String
     email?: string | null; // String
     id?: number | null; // Int
     password?: string | null; // String
     updated_at?: string | null; // String
-  }
-  Zones: { // root type
+  };
+  Zones: {
+    // root type
     cities?: Array<NexusGenRootTypes['Cities'] | null> | null; // [Cities]
     created_at?: string | null; // String
     id?: number | null; // Int
     updated_at?: string | null; // String
     zone_name?: string | null; // String
-  }
+  };
 }
 
-export interface NexusGenInterfaces {
-}
+export interface NexusGenInterfaces {}
 
-export interface NexusGenUnions {
-}
+export interface NexusGenUnions {}
 
-export type NexusGenRootTypes = NexusGenObjects
+export type NexusGenRootTypes = NexusGenObjects;
 
-export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
+export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars;
 
 export interface NexusGenFieldTypes {
-  Cities: { // field return type
+  Cities: {
+    // field return type
     area: string | null; // String
     city_name: string | null; // String
     created_at: string | null; // String
     id: number | null; // Int
     updated_at: string | null; // String
     zone: NexusGenRootTypes['Zones'] | null; // Zones
-  }
-  CreateCitiesResult: { // field return type
+  };
+  CreateCitiesResult: {
+    // field return type
     message: string; // String!
-  }
-  CreateMachinesResult: { // field return type
+  };
+  CreateMachinesResult: {
+    // field return type
     message: string; // String!
-  }
-  CreateProductsResult: { // field return type
+  };
+  CreateProductsResult: {
+    // field return type
     message: string; // String!
-  }
-  CreateZonesResult: { // field return type
+  };
+  CreateZonesResult: {
+    // field return type
     message: string; // String!
-  }
-  GetCitiesResult: { // field return type
+  };
+  GetCitiesResult: {
+    // field return type
     cities: Array<NexusGenRootTypes['Cities'] | null> | null; // [Cities]
     message: string; // String!
-  }
-  GetCityByIdResult: { // field return type
+  };
+  GetCityByIdResult: {
+    // field return type
     city: NexusGenRootTypes['Cities'] | null; // Cities
     message: string; // String!
-  }
-  GetMachineByIdResult: { // field return type
+  };
+  GetMachineByIdResult: {
+    // field return type
     machine: NexusGenRootTypes['Machines'] | null; // Machines
     message: string; // String!
-  }
-  GetMachinesResult: { // field return type
+  };
+  GetMachinesResult: {
+    // field return type
     machines: Array<NexusGenRootTypes['Machines'] | null> | null; // [Machines]
     message: string; // String!
-  }
-  GetProductByIdResult: { // field return type
+  };
+  GetProductByIdResult: {
+    // field return type
     message: string; // String!
     product: NexusGenRootTypes['Products'] | null; // Products
-  }
-  GetProductsResult: { // field return type
+  };
+  GetProductsResult: {
+    // field return type
     message: string; // String!
     products: Array<NexusGenRootTypes['Products'] | null> | null; // [Products]
-  }
-  GetUsersByIdResult: { // field return type
+  };
+  GetUsersByIdResult: {
+    // field return type
     message: string; // String!
     user: NexusGenRootTypes['Users'] | null; // Users
-  }
-  GetUsersResult: { // field return type
+  };
+  GetUsersResult: {
+    // field return type
     message: string; // String!
     users: Array<NexusGenRootTypes['Users'] | null> | null; // [Users]
-  }
-  GetZonesByIdResult: { // field return type
+  };
+  GetZonesByIdResult: {
+    // field return type
     message: string; // String!
     zone: NexusGenRootTypes['Zones'] | null; // Zones
-  }
-  GetZonesResult: { // field return type
+  };
+  GetZonesResult: {
+    // field return type
     message: string; // String!
     zones: Array<NexusGenRootTypes['Zones'] | null> | null; // [Zones]
-  }
-  LoginResult: { // field return type
+  };
+  LoginResult: {
+    // field return type
     message: string; // String!
     token: string | null; // String
     user_id: number | null; // Int
-  }
-  Machines: { // field return type
+  };
+  Machines: {
+    // field return type
     city: NexusGenRootTypes['Cities'] | null; // Cities
     created_at: string | null; // String
     id: number | null; // Int
@@ -247,16 +282,18 @@ export interface NexusGenFieldTypes {
     products: Array<NexusGenRootTypes['Products'] | null> | null; // [Products]
     serial_number: number | null; // Int
     updated_at: string | null; // String
-  }
-  Mutation: { // field return type
+  };
+  Mutation: {
+    // field return type
     createCities: NexusGenRootTypes['CreateCitiesResult']; // CreateCitiesResult!
     createMachines: NexusGenRootTypes['CreateMachinesResult']; // CreateMachinesResult!
     createProducts: NexusGenRootTypes['CreateProductsResult']; // CreateProductsResult!
     createZones: NexusGenRootTypes['CreateZonesResult']; // CreateZonesResult!
     login: NexusGenRootTypes['LoginResult']; // LoginResult!
     signup: NexusGenRootTypes['SignupResult']; // SignupResult!
-  }
-  Products: { // field return type
+  };
+  Products: {
+    // field return type
     city: NexusGenRootTypes['Cities'] | null; // Cities
     created_at: string | null; // String
     id: number | null; // Int
@@ -266,8 +303,9 @@ export interface NexusGenFieldTypes {
     product_name: string | null; // String
     quantity: number | null; // Int
     updated_at: string | null; // String
-  }
-  Query: { // field return type
+  };
+  Query: {
+    // field return type
     getCities: NexusGenRootTypes['GetCitiesResult']; // GetCitiesResult!
     getCityById: NexusGenRootTypes['GetCityByIdResult']; // GetCityByIdResult!
     getMachineById: NexusGenRootTypes['GetMachineByIdResult']; // GetMachineByIdResult!
@@ -278,196 +316,231 @@ export interface NexusGenFieldTypes {
     getUsers: NexusGenRootTypes['GetUsersResult']; // GetUsersResult!
     getZoneById: NexusGenRootTypes['GetZonesByIdResult']; // GetZonesByIdResult!
     getZones: NexusGenRootTypes['GetZonesResult']; // GetZonesResult!
-  }
-  SignupResult: { // field return type
+  };
+  SignupResult: {
+    // field return type
     message: string; // String!
-  }
-  Users: { // field return type
+  };
+  Users: {
+    // field return type
     created_at: string | null; // String
     email: string | null; // String
     id: number | null; // Int
     password: string | null; // String
     updated_at: string | null; // String
-  }
-  Zones: { // field return type
+  };
+  Zones: {
+    // field return type
     cities: Array<NexusGenRootTypes['Cities'] | null> | null; // [Cities]
     created_at: string | null; // String
     id: number | null; // Int
     updated_at: string | null; // String
     zone_name: string | null; // String
-  }
+  };
 }
 
 export interface NexusGenFieldTypeNames {
-  Cities: { // field return type name
-    area: 'String'
-    city_name: 'String'
-    created_at: 'String'
-    id: 'Int'
-    updated_at: 'String'
-    zone: 'Zones'
-  }
-  CreateCitiesResult: { // field return type name
-    message: 'String'
-  }
-  CreateMachinesResult: { // field return type name
-    message: 'String'
-  }
-  CreateProductsResult: { // field return type name
-    message: 'String'
-  }
-  CreateZonesResult: { // field return type name
-    message: 'String'
-  }
-  GetCitiesResult: { // field return type name
-    cities: 'Cities'
-    message: 'String'
-  }
-  GetCityByIdResult: { // field return type name
-    city: 'Cities'
-    message: 'String'
-  }
-  GetMachineByIdResult: { // field return type name
-    machine: 'Machines'
-    message: 'String'
-  }
-  GetMachinesResult: { // field return type name
-    machines: 'Machines'
-    message: 'String'
-  }
-  GetProductByIdResult: { // field return type name
-    message: 'String'
-    product: 'Products'
-  }
-  GetProductsResult: { // field return type name
-    message: 'String'
-    products: 'Products'
-  }
-  GetUsersByIdResult: { // field return type name
-    message: 'String'
-    user: 'Users'
-  }
-  GetUsersResult: { // field return type name
-    message: 'String'
-    users: 'Users'
-  }
-  GetZonesByIdResult: { // field return type name
-    message: 'String'
-    zone: 'Zones'
-  }
-  GetZonesResult: { // field return type name
-    message: 'String'
-    zones: 'Zones'
-  }
-  LoginResult: { // field return type name
-    message: 'String'
-    token: 'String'
-    user_id: 'Int'
-  }
-  Machines: { // field return type name
-    city: 'Cities'
-    created_at: 'String'
-    id: 'Int'
-    machine_name: 'String'
-    products: 'Products'
-    serial_number: 'Int'
-    updated_at: 'String'
-  }
-  Mutation: { // field return type name
-    createCities: 'CreateCitiesResult'
-    createMachines: 'CreateMachinesResult'
-    createProducts: 'CreateProductsResult'
-    createZones: 'CreateZonesResult'
-    login: 'LoginResult'
-    signup: 'SignupResult'
-  }
-  Products: { // field return type name
-    city: 'Cities'
-    created_at: 'String'
-    id: 'Int'
-    machine: 'Machines'
-    price: 'Float'
-    product_description: 'String'
-    product_name: 'String'
-    quantity: 'Int'
-    updated_at: 'String'
-  }
-  Query: { // field return type name
-    getCities: 'GetCitiesResult'
-    getCityById: 'GetCityByIdResult'
-    getMachineById: 'GetMachineByIdResult'
-    getMachines: 'GetMachinesResult'
-    getProductById: 'GetProductByIdResult'
-    getProducts: 'GetProductsResult'
-    getUserById: 'GetUsersByIdResult'
-    getUsers: 'GetUsersResult'
-    getZoneById: 'GetZonesByIdResult'
-    getZones: 'GetZonesResult'
-  }
-  SignupResult: { // field return type name
-    message: 'String'
-  }
-  Users: { // field return type name
-    created_at: 'String'
-    email: 'String'
-    id: 'Int'
-    password: 'String'
-    updated_at: 'String'
-  }
-  Zones: { // field return type name
-    cities: 'Cities'
-    created_at: 'String'
-    id: 'Int'
-    updated_at: 'String'
-    zone_name: 'String'
-  }
+  Cities: {
+    // field return type name
+    area: 'String';
+    city_name: 'String';
+    created_at: 'String';
+    id: 'Int';
+    updated_at: 'String';
+    zone: 'Zones';
+  };
+  CreateCitiesResult: {
+    // field return type name
+    message: 'String';
+  };
+  CreateMachinesResult: {
+    // field return type name
+    message: 'String';
+  };
+  CreateProductsResult: {
+    // field return type name
+    message: 'String';
+  };
+  CreateZonesResult: {
+    // field return type name
+    message: 'String';
+  };
+  GetCitiesResult: {
+    // field return type name
+    cities: 'Cities';
+    message: 'String';
+  };
+  GetCityByIdResult: {
+    // field return type name
+    city: 'Cities';
+    message: 'String';
+  };
+  GetMachineByIdResult: {
+    // field return type name
+    machine: 'Machines';
+    message: 'String';
+  };
+  GetMachinesResult: {
+    // field return type name
+    machines: 'Machines';
+    message: 'String';
+  };
+  GetProductByIdResult: {
+    // field return type name
+    message: 'String';
+    product: 'Products';
+  };
+  GetProductsResult: {
+    // field return type name
+    message: 'String';
+    products: 'Products';
+  };
+  GetUsersByIdResult: {
+    // field return type name
+    message: 'String';
+    user: 'Users';
+  };
+  GetUsersResult: {
+    // field return type name
+    message: 'String';
+    users: 'Users';
+  };
+  GetZonesByIdResult: {
+    // field return type name
+    message: 'String';
+    zone: 'Zones';
+  };
+  GetZonesResult: {
+    // field return type name
+    message: 'String';
+    zones: 'Zones';
+  };
+  LoginResult: {
+    // field return type name
+    message: 'String';
+    token: 'String';
+    user_id: 'Int';
+  };
+  Machines: {
+    // field return type name
+    city: 'Cities';
+    created_at: 'String';
+    id: 'Int';
+    machine_name: 'String';
+    products: 'Products';
+    serial_number: 'Int';
+    updated_at: 'String';
+  };
+  Mutation: {
+    // field return type name
+    createCities: 'CreateCitiesResult';
+    createMachines: 'CreateMachinesResult';
+    createProducts: 'CreateProductsResult';
+    createZones: 'CreateZonesResult';
+    login: 'LoginResult';
+    signup: 'SignupResult';
+  };
+  Products: {
+    // field return type name
+    city: 'Cities';
+    created_at: 'String';
+    id: 'Int';
+    machine: 'Machines';
+    price: 'Float';
+    product_description: 'String';
+    product_name: 'String';
+    quantity: 'Int';
+    updated_at: 'String';
+  };
+  Query: {
+    // field return type name
+    getCities: 'GetCitiesResult';
+    getCityById: 'GetCityByIdResult';
+    getMachineById: 'GetMachineByIdResult';
+    getMachines: 'GetMachinesResult';
+    getProductById: 'GetProductByIdResult';
+    getProducts: 'GetProductsResult';
+    getUserById: 'GetUsersByIdResult';
+    getUsers: 'GetUsersResult';
+    getZoneById: 'GetZonesByIdResult';
+    getZones: 'GetZonesResult';
+  };
+  SignupResult: {
+    // field return type name
+    message: 'String';
+  };
+  Users: {
+    // field return type name
+    created_at: 'String';
+    email: 'String';
+    id: 'Int';
+    password: 'String';
+    updated_at: 'String';
+  };
+  Zones: {
+    // field return type name
+    cities: 'Cities';
+    created_at: 'String';
+    id: 'Int';
+    updated_at: 'String';
+    zone_name: 'String';
+  };
 }
 
 export interface NexusGenArgTypes {
   Mutation: {
-    createCities: { // args
+    createCities: {
+      // args
       input: NexusGenInputs['CreateCitiesInput']; // CreateCitiesInput!
-    }
-    createMachines: { // args
+    };
+    createMachines: {
+      // args
       input: NexusGenInputs['CreateMachinesInput']; // CreateMachinesInput!
-    }
-    createProducts: { // args
+    };
+    createProducts: {
+      // args
       input: NexusGenInputs['CreateProductsInput']; // CreateProductsInput!
-    }
-    createZones: { // args
+    };
+    createZones: {
+      // args
       input: NexusGenInputs['CreateZonesInput']; // CreateZonesInput!
-    }
-    login: { // args
+    };
+    login: {
+      // args
       input: NexusGenInputs['LoginInput']; // LoginInput!
-    }
-    signup: { // args
+    };
+    signup: {
+      // args
       input: NexusGenInputs['SignupInput']; // SignupInput!
-    }
-  }
+    };
+  };
   Query: {
-    getCityById: { // args
+    getCityById: {
+      // args
       id?: number | null; // Int
-    }
-    getMachineById: { // args
+    };
+    getMachineById: {
+      // args
       id?: number | null; // Int
-    }
-    getProductById: { // args
+    };
+    getProductById: {
+      // args
       id?: number | null; // Int
-    }
-    getUserById: { // args
+    };
+    getUserById: {
+      // args
       id?: number | null; // Int
-    }
-    getZoneById: { // args
+    };
+    getZoneById: {
+      // args
       id?: number | null; // Int
-    }
-  }
+    };
+  };
 }
 
-export interface NexusGenAbstractTypeMembers {
-}
+export interface NexusGenAbstractTypeMembers {}
 
-export interface NexusGenTypeInterfaces {
-}
+export interface NexusGenTypeInterfaces {}
 
 export type NexusGenObjectNames = keyof NexusGenObjects;
 
@@ -487,11 +560,11 @@ export type NexusGenAbstractsUsingStrategyResolveType = never;
 
 export type NexusGenFeaturesConfig = {
   abstractTypeStrategies: {
-    isTypeOf: false
-    resolveType: true
-    __typename: false
-  }
-}
+    isTypeOf: false;
+    resolveType: true;
+    __typename: false;
+  };
+};
 
 export interface NexusGenTypes {
   context: any;
@@ -510,8 +583,13 @@ export interface NexusGenTypes {
   scalarNames: NexusGenScalarNames;
   unionNames: NexusGenUnionNames;
   allInputTypes: NexusGenTypes['inputNames'] | NexusGenTypes['enumNames'] | NexusGenTypes['scalarNames'];
-  allOutputTypes: NexusGenTypes['objectNames'] | NexusGenTypes['enumNames'] | NexusGenTypes['unionNames'] | NexusGenTypes['interfaceNames'] | NexusGenTypes['scalarNames'];
-  allNamedTypes: NexusGenTypes['allInputTypes'] | NexusGenTypes['allOutputTypes']
+  allOutputTypes:
+    | NexusGenTypes['objectNames']
+    | NexusGenTypes['enumNames']
+    | NexusGenTypes['unionNames']
+    | NexusGenTypes['interfaceNames']
+    | NexusGenTypes['scalarNames'];
+  allNamedTypes: NexusGenTypes['allInputTypes'] | NexusGenTypes['allOutputTypes'];
   abstractTypes: NexusGenTypes['interfaceNames'] | NexusGenTypes['unionNames'];
   abstractTypeMembers: NexusGenAbstractTypeMembers;
   objectsUsingAbstractStrategyIsTypeOf: NexusGenObjectsUsingAbstractStrategyIsTypeOf;
@@ -519,18 +597,11 @@ export interface NexusGenTypes {
   features: NexusGenFeaturesConfig;
 }
 
-
 declare global {
-  interface NexusGenPluginTypeConfig<TypeName extends string> {
-  }
-  interface NexusGenPluginInputTypeConfig<TypeName extends string> {
-  }
-  interface NexusGenPluginFieldConfig<TypeName extends string, FieldName extends string> {
-  }
-  interface NexusGenPluginInputFieldConfig<TypeName extends string, FieldName extends string> {
-  }
-  interface NexusGenPluginSchemaConfig {
-  }
-  interface NexusGenPluginArgConfig {
-  }
+  interface NexusGenPluginTypeConfig<TypeName extends string> {}
+  interface NexusGenPluginInputTypeConfig<TypeName extends string> {}
+  interface NexusGenPluginFieldConfig<TypeName extends string, FieldName extends string> {}
+  interface NexusGenPluginInputFieldConfig<TypeName extends string, FieldName extends string> {}
+  interface NexusGenPluginSchemaConfig {}
+  interface NexusGenPluginArgConfig {}
 }

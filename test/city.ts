@@ -11,6 +11,7 @@ export const cityTest = (): void => {
     test('createCity', async () => {
       const token = await getToken();
       const zoneId = await getZoneId();
+      const userId = await getUserId();
 
       const CREATE_CITY = gql`
         mutation createCities($input: CreateCitiesInput!) {
@@ -24,6 +25,7 @@ export const cityTest = (): void => {
           city_name: randomText,
           area: randomText,
           zone_id: zoneId,
+          user_id: userId,
         },
       };
       const headers = {
@@ -39,6 +41,7 @@ export const cityTest = (): void => {
 
     test('getCities', async () => {
       const token = await getToken();
+      const userId = await getUserId();
 
       const GET_CITIES = gql`
         query getCities {
@@ -60,10 +63,11 @@ export const cityTest = (): void => {
           }
         }
       `;
+      const variables = { user_id: userId };
       const headers = {
         authorization: `Bearer ${token}`,
       };
-      const response = await graphQLClient.request(GET_CITIES, {}, headers);
+      const response = await graphQLClient.request(GET_CITIES, variables, headers);
       console.log('response = ', response);
 
       expect(response).toBeDefined();
@@ -132,6 +136,29 @@ async function getToken() {
 
   const token = response.login.token;
   return token;
+}
+
+async function getUserId() {
+  const LOGIN = gql`
+    mutation login($input: LoginInput!) {
+      login(input: $input) {
+        message
+        token
+        user_id
+      }
+    }
+  `;
+  const variables = {
+    input: {
+      email: 'test@email.com',
+      password: 'test',
+    },
+  };
+  const response = await graphQLClient.request(LOGIN, variables);
+  console.log('response = ', response);
+
+  const userId = response.login.user_id;
+  return userId;
 }
 
 async function getZoneId() {

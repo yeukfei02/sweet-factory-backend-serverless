@@ -2,12 +2,13 @@ import { PrismaClient, cities } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export const createCities = async (cityName: string, area: string, zoneId: number): Promise<cities> => {
+export const createCities = async (cityName: string, area: string, zoneId: number, userId: number): Promise<cities> => {
   const city = await prisma.cities.create({
     data: {
       city_name: cityName,
       area: area,
       zone_id: zoneId,
+      user_id: userId,
       created_at: new Date(),
       updated_at: new Date(),
     },
@@ -15,8 +16,11 @@ export const createCities = async (cityName: string, area: string, zoneId: numbe
   return city;
 };
 
-export const getCities = async (): Promise<cities[]> => {
+export const getCities = async (userId: number): Promise<cities[]> => {
   const cities = await prisma.cities.findMany({
+    where: {
+      user_id: userId,
+    },
     include: {
       zones: true,
     },

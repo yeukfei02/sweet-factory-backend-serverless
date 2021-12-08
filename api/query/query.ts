@@ -32,7 +32,9 @@ export const getUserById = queryField('getUserById', {
 
 export const getZones = queryField('getZones', {
   type: nonNull(GetZonesResult),
-  args: {},
+  args: {
+    user_id: intArg(),
+  },
   resolve: getZonesControllerFunc,
 });
 
@@ -46,7 +48,9 @@ export const getZoneById = queryField('getZoneById', {
 
 export const getCities = queryField('getCities', {
   type: nonNull(GetCitiesResult),
-  args: {},
+  args: {
+    user_id: intArg(),
+  },
   resolve: getCitiesControllerFunc,
 });
 
@@ -60,7 +64,9 @@ export const getCityById = queryField('getCityById', {
 
 export const getMachines = queryField('getMachines', {
   type: nonNull(GetMachinesResult),
-  args: {},
+  args: {
+    user_id: intArg(),
+  },
   resolve: getMachinesControllerFunc,
 });
 
@@ -74,7 +80,9 @@ export const getMachineById = queryField('getMachineById', {
 
 export const getProducts = queryField('getProducts', {
   type: nonNull(GetProductsResult),
-  args: {},
+  args: {
+    user_id: intArg(),
+  },
   resolve: getProductsControllerFunc,
 });
 

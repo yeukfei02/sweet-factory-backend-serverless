@@ -6,5 +6,6 @@ export const CreateCitiesInput = inputObjectType({
     t.nonNull.string('city_name');
     t.nonNull.string('area');
     t.nonNull.int('zone_id');
+    t.nonNull.int('user_id');
   },
 });

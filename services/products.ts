@@ -9,6 +9,7 @@ export const createProducts = async (
   quantity: number,
   machineId: number,
   cityId: number,
+  userId: number,
 ): Promise<products> => {
   const product = await prisma.products.create({
     data: {
@@ -18,6 +19,7 @@ export const createProducts = async (
       quantity: quantity,
       machine_id: machineId,
       city_id: cityId,
+      user_id: userId,
       created_at: new Date(),
       updated_at: new Date(),
     },
@@ -25,8 +27,11 @@ export const createProducts = async (
   return product;
 };
 
-export const getProducts = async (): Promise<products[]> => {
+export const getProducts = async (userId: number): Promise<products[]> => {
   const products = await prisma.products.findMany({
+    where: {
+      user_id: userId,
+    },
     include: {
       machines: true,
       cities: true,

@@ -58,6 +58,7 @@
     "remove": "serverless remove",
     "test": "jest",
     "lint": "eslint '*/**/*.{ts,tsx}' --quiet --fix",
+    "generate:nexus": "npx ts-node --transpile-only ./api/schema.ts",
     "generate:prisma": "npx prisma introspect && npx prisma generate",
     "format:prisma": "npx prisma format",
     "prisma-studio": "npx prisma studio",
@@ -66,8 +67,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint && yarn run format:prisma",
-      "pre-push": "yarn lint && yarn run format:prisma"
+      "pre-commit": "yarn run generate:nexus && yarn lint && yarn run format:prisma",
+      "pre-push": "yarn run generate:nexus && yarn lint && yarn run format:prisma"
     }
   }
 }

@@ -10,8 +10,9 @@ export const createCitiesControllerFunc = async (parent: any, args: any, context
     const cityNameInput = args.input.city_name;
     const areaInput = args.input.area;
     const zoneIdInput = args.input.zone_id;
-    if (cityNameInput && areaInput && zoneIdInput) {
-      await createCities(cityNameInput, areaInput, zoneIdInput);
+    const userIdInput = args.input.user_id;
+    if (cityNameInput && areaInput && zoneIdInput && userIdInput) {
+      await createCities(cityNameInput, areaInput, zoneIdInput, userIdInput);
       response = {
         message: 'createCities',
       };
@@ -31,7 +32,8 @@ export const getCitiesControllerFunc = async (parent: any, args: any, context: a
   const token = context.token;
   const errorMessage = validateJwtToken(token);
   if (!errorMessage) {
-    const cities = await getCities();
+    const userIdInput = args.input.user_id;
+    const cities = await getCities(userIdInput);
     if (cities) {
       const formattedCities = cities.map((item: any, i: number) => {
         const newObj = {

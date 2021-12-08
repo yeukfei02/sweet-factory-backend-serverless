@@ -32,7 +32,7 @@ export const getMachinesControllerFunc = async (parent: any, args: any, context:
   const token = context.token;
   const errorMessage = validateJwtToken(token);
   if (!errorMessage) {
-    const userIdInput = args.input.user_id;
+    const userIdInput = args.user_id;
     const machines = await getMachines(userIdInput);
     if (machines) {
       const formattedMachines = machines.map((item: any, i: number) => {

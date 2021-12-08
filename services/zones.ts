@@ -2,10 +2,11 @@ import { PrismaClient, zones } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export const createZones = async (zoneName: string): Promise<zones> => {
+export const createZones = async (zoneName: string, userId: number): Promise<zones> => {
   const zone = await prisma.zones.create({
     data: {
       zone_name: zoneName,
+      user_id: userId,
       created_at: new Date(),
       updated_at: new Date(),
     },
@@ -13,8 +14,11 @@ export const createZones = async (zoneName: string): Promise<zones> => {
   return zone;
 };
 
-export const getZones = async (): Promise<zones[]> => {
+export const getZones = async (userId: number): Promise<zones[]> => {
   const zones = await prisma.zones.findMany({
+    where: {
+      user_id: userId,
+    },
     include: {
       cities: true,
     },

@@ -10,8 +10,9 @@ export const createMachinesControllerFunc = async (parent: any, args: any, conte
     const machineNameInput = args.input.machine_name;
     const serialNumberInput = args.input.serial_number;
     const cityIdInput = args.input.city_id;
-    if (machineNameInput && serialNumberInput && cityIdInput) {
-      await createMachines(machineNameInput, serialNumberInput, cityIdInput);
+    const userIdInput = args.input.user_id;
+    if (machineNameInput && serialNumberInput && cityIdInput && userIdInput) {
+      await createMachines(machineNameInput, serialNumberInput, cityIdInput, userIdInput);
       response = {
         message: 'createMachines',
       };
@@ -31,7 +32,8 @@ export const getMachinesControllerFunc = async (parent: any, args: any, context:
   const token = context.token;
   const errorMessage = validateJwtToken(token);
   if (!errorMessage) {
-    const machines = await getMachines();
+    const userIdInput = args.input.user_id;
+    const machines = await getMachines(userIdInput);
     if (machines) {
       const formattedMachines = machines.map((item: any, i: number) => {
         const newObj = {

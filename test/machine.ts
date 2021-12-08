@@ -12,6 +12,7 @@ export const machineTest = (): void => {
     test('createMachine', async () => {
       const token = await getToken();
       const cityId = await getCityId();
+      const userId = await getUserId();
 
       const CREATE_MACHINES = gql`
         mutation createMachines($input: CreateMachinesInput!) {
@@ -25,6 +26,7 @@ export const machineTest = (): void => {
           machine_name: randomText,
           serial_number: randomNumber,
           city_id: cityId,
+          user_id: userId,
         },
       };
       const headers = {
@@ -40,6 +42,7 @@ export const machineTest = (): void => {
 
     test('getMachines', async () => {
       const token = await getToken();
+      const userId = await getUserId();
 
       const GET_MACHINES = gql`
         query getMachines {
@@ -71,10 +74,11 @@ export const machineTest = (): void => {
           }
         }
       `;
+      const variables = { user_id: userId };
       const headers = {
         authorization: `Bearer ${token}`,
       };
-      const response = await graphQLClient.request(GET_MACHINES, {}, headers);
+      const response = await graphQLClient.request(GET_MACHINES, variables, headers);
       console.log('response = ', response);
 
       expect(response).toBeDefined();
@@ -153,6 +157,29 @@ async function getToken() {
 
   const token = response.login.token;
   return token;
+}
+
+async function getUserId() {
+  const LOGIN = gql`
+    mutation login($input: LoginInput!) {
+      login(input: $input) {
+        message
+        token
+        user_id
+      }
+    }
+  `;
+  const variables = {
+    input: {
+      email: 'test@email.com',
+      password: 'test',
+    },
+  };
+  const response = await graphQLClient.request(LOGIN, variables);
+  console.log('response = ', response);
+
+  const userId = response.login.user_id;
+  return userId;
 }
 
 async function getCityId() {

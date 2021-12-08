@@ -8,8 +8,9 @@ export const createZonesControllerFunc = async (parent: any, args: any, context:
   const errorMessage = validateJwtToken(token);
   if (!errorMessage) {
     const zoneNameInput = args.input.zone_name;
-    if (zoneNameInput) {
-      await createZones(zoneNameInput);
+    const userIdInput = args.input.user_id;
+    if (zoneNameInput && userIdInput) {
+      await createZones(zoneNameInput, userIdInput);
       response = {
         message: 'createZones',
       };
@@ -29,7 +30,8 @@ export const getZonesControllerFunc = async (parent: any, args: any, context: an
   const token = context.token;
   const errorMessage = validateJwtToken(token);
   if (!errorMessage) {
-    const zones = await getZones();
+    const userIdInput = args.input.user_id;
+    const zones = await getZones(userIdInput);
     if (zones) {
       response = {
         message: 'getZones',

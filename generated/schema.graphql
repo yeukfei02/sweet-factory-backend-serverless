@@ -14,6 +14,7 @@ type Cities {
 input CreateCitiesInput {
   area: String!
   city_name: String!
+  user_id: Int!
   zone_id: Int!
 }
 
@@ -25,6 +26,7 @@ input CreateMachinesInput {
   city_id: Int!
   machine_name: String!
   serial_number: Int!
+  user_id: Int!
 }
 
 type CreateMachinesResult {
@@ -38,6 +40,7 @@ input CreateProductsInput {
   product_description: String!
   product_name: String!
   quantity: Int!
+  user_id: Int!
 }
 
 type CreateProductsResult {
@@ -45,6 +48,7 @@ type CreateProductsResult {
 }
 
 input CreateZonesInput {
+  user_id: Int!
   zone_name: String!
 }
 
@@ -145,16 +149,16 @@ type Products {
 }
 
 type Query {
-  getCities: GetCitiesResult!
+  getCities(user_id: Int): GetCitiesResult!
   getCityById(id: Int): GetCityByIdResult!
   getMachineById(id: Int): GetMachineByIdResult!
-  getMachines: GetMachinesResult!
+  getMachines(user_id: Int): GetMachinesResult!
   getProductById(id: Int): GetProductByIdResult!
-  getProducts: GetProductsResult!
+  getProducts(user_id: Int): GetProductsResult!
   getUserById(id: Int): GetUsersByIdResult!
   getUsers: GetUsersResult!
   getZoneById(id: Int): GetZonesByIdResult!
-  getZones: GetZonesResult!
+  getZones(user_id: Int): GetZonesResult!
 }
 
 input SignupInput {

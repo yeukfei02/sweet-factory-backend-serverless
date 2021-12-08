@@ -22,10 +22,13 @@ model cities {
   zone_id    Int?
   created_at DateTime
   updated_at DateTime
+  user_id    Int?
+  users      users?     @relation(fields: [user_id], references: [id])
   zones      zones?     @relation(fields: [zone_id], references: [id])
   machines   machines[]
   products   products[]
 
+  @@index([user_id], name: "fk_rails_34332fe7ca")
   @@index([zone_id], name: "fk_rails_f8d2792419")
 }
 
@@ -36,10 +39,13 @@ model machines {
   city_id       Int?
   created_at    DateTime
   updated_at    DateTime
+  user_id       Int?
   cities        cities?    @relation(fields: [city_id], references: [id])
+  users         users?     @relation(fields: [user_id], references: [id])
   products      products[]
 
   @@index([city_id], name: "fk_rails_d74b7fc4ce")
+  @@index([user_id], name: "fk_rails_f7c8eaf040")
 }
 
 model products {
@@ -52,11 +58,14 @@ model products {
   city_id             Int?
   created_at          DateTime
   updated_at          DateTime
+  user_id             Int?
   cities              cities?   @relation(fields: [city_id], references: [id])
   machines            machines? @relation(fields: [machine_id], references: [id])
+  users               users?    @relation(fields: [user_id], references: [id])
 
   @@index([city_id], name: "fk_rails_391685e1f6")
   @@index([machine_id], name: "fk_rails_87758910ea")
+  @@index([user_id], name: "fk_rails_dee2631783")
 }
 
 model schema_migrations {
@@ -64,11 +73,15 @@ model schema_migrations {
 }
 
 model users {
-  id         Int      @id @default(autoincrement())
+  id         Int        @id @default(autoincrement())
   email      String?
   password   String?
   created_at DateTime
   updated_at DateTime
+  cities     cities[]
+  machines   machines[]
+  products   products[]
+  zones      zones[]
 }
 
 model zones {
@@ -76,5 +89,9 @@ model zones {
   zone_name  String?
   created_at DateTime
   updated_at DateTime
+  user_id    Int?
+  users      users?   @relation(fields: [user_id], references: [id])
   cities     cities[]
+
+  @@index([user_id], name: "fk_rails_36b0b64bdb")
 }

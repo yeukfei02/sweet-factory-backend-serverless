@@ -9,5 +9,6 @@ export const CreateProductsInput = inputObjectType({
     t.nonNull.int('quantity');
     t.nonNull.int('machine_id');
     t.nonNull.int('city_id');
+    t.nonNull.int('user_id');
   },
 });

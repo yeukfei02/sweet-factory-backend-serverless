@@ -12,6 +12,7 @@ export const productTest = (): void => {
       const token = await getToken();
       const machineId = await getMachineId();
       const cityId = await getCityId();
+      const userId = await getUserId();
 
       const CREATE_PRODUCTS = gql`
         mutation createProducts($input: CreateProductsInput!) {
@@ -28,6 +29,7 @@ export const productTest = (): void => {
           quantity: faker.datatype.number(),
           machine_id: machineId,
           city_id: cityId,
+          user_id: userId,
         },
       };
       const headers = {
@@ -43,6 +45,7 @@ export const productTest = (): void => {
 
     test('getProducts', async () => {
       const token = await getToken();
+      const userId = await getUserId();
 
       const GET_PRODUCTS = gql`
         query getProducts {
@@ -74,10 +77,11 @@ export const productTest = (): void => {
           }
         }
       `;
+      const variables = { user_id: userId };
       const headers = {
         authorization: `Bearer ${token}`,
       };
-      const response = await graphQLClient.request(GET_PRODUCTS, {}, headers);
+      const response = await graphQLClient.request(GET_PRODUCTS, variables, headers);
       console.log('response = ', response);
 
       expect(response).toBeDefined();
@@ -156,6 +160,29 @@ async function getToken() {
 
   const token = response.login.token;
   return token;
+}
+
+async function getUserId() {
+  const LOGIN = gql`
+    mutation login($input: LoginInput!) {
+      login(input: $input) {
+        message
+        token
+        user_id
+      }
+    }
+  `;
+  const variables = {
+    input: {
+      email: 'test@email.com',
+      password: 'test',
+    },
+  };
+  const response = await graphQLClient.request(LOGIN, variables);
+  console.log('response = ', response);
+
+  const userId = response.login.user_id;
+  return userId;
 }
 
 async function getProductId() {

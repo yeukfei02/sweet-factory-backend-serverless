@@ -13,13 +13,15 @@ export const createProductsControllerFunc = async (parent: any, args: any, conte
     const quantityInput = args.input.quantity;
     const machineIdInput = args.input.machine_id;
     const cityIdInput = args.input.city_id;
+    const userIdInput = args.input.user_id;
     if (
       productNameInput &&
       productDescriptionInput &&
       priceInput > 0 &&
       quantityInput > 0 &&
       machineIdInput &&
-      cityIdInput
+      cityIdInput &&
+      userIdInput
     ) {
       await createProducts(
         productNameInput,
@@ -28,6 +30,7 @@ export const createProductsControllerFunc = async (parent: any, args: any, conte
         quantityInput,
         machineIdInput,
         cityIdInput,
+        userIdInput,
       );
       response = {
         message: 'createProducts',
@@ -48,7 +51,8 @@ export const getProductsControllerFunc = async (parent: any, args: any, context:
   const token = context.token;
   const errorMessage = validateJwtToken(token);
   if (!errorMessage) {
-    const products = await getProducts();
+    const userIdInput = args.input.user_id;
+    const products = await getProducts(userIdInput);
     if (products) {
       const formattedProducts = products.map((item: any, i: number) => {
         const newObj = {

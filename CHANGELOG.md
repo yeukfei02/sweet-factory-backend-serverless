@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/yeukfei02/sweet-factory-backend-serverless/compare/v0.1.4...v0.1.5) (2021-12-08)
+
+
+### Features
+
+* 🎸 add graphql-request ([c21b9c3](https://github.com/yeukfei02/sweet-factory-backend-serverless/commit/c21b9c372d05eac3e482c09b17dcc1f7a38d2355))
+* 🎸 add more test case ([f429083](https://github.com/yeukfei02/sweet-factory-backend-serverless/commit/f429083c711332a9434403949ec9450433f5a254))
+* 🎸 add semgrep.yml ([087c9fd](https://github.com/yeukfei02/sweet-factory-backend-serverless/commit/087c9fd637e653838366a1a132d968189fd11a52))
+* 🎸 add user_id in create and get list api ([c0a1361](https://github.com/yeukfei02/sweet-factory-backend-serverless/commit/c0a1361edebaa0910da0e7c6723961aa4109c1b7))
+
+
+### Bug Fixes
+
+* 🐛 rename to helpers ([f8cd37f](https://github.com/yeukfei02/sweet-factory-backend-serverless/commit/f8cd37f93724044bfb8d4b46a861a0fa700ec7af))
+* 🐛 update package.json scripts ([3c7e937](https://github.com/yeukfei02/sweet-factory-backend-serverless/commit/3c7e93715bdf4b1762935be7d8e8360c4d1967cc))
+
 ### [0.1.4](https://github.com/yeukfei02/sweet-factory-backend-serverless/compare/v0.1.3...v0.1.4) (2021-08-19)
 
 

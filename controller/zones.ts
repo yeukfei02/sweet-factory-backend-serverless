@@ -30,7 +30,7 @@ export const getZonesControllerFunc = async (parent: any, args: any, context: an
   const token = context.token;
   const errorMessage = validateJwtToken(token);
   if (!errorMessage) {
-    const userIdInput = args.input.user_id;
+    const userIdInput = args.user_id;
     const zones = await getZones(userIdInput);
     if (zones) {
       response = {

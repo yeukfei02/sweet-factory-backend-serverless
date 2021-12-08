@@ -51,7 +51,7 @@ export const getProductsControllerFunc = async (parent: any, args: any, context:
   const token = context.token;
   const errorMessage = validateJwtToken(token);
   if (!errorMessage) {
-    const userIdInput = args.input.user_id;
+    const userIdInput = args.user_id;
     const products = await getProducts(userIdInput);
     if (products) {
       const formattedProducts = products.map((item: any, i: number) => {

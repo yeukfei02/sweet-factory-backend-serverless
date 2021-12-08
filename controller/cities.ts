@@ -32,7 +32,7 @@ export const getCitiesControllerFunc = async (parent: any, args: any, context: a
   const token = context.token;
   const errorMessage = validateJwtToken(token);
   if (!errorMessage) {
-    const userIdInput = args.input.user_id;
+    const userIdInput = args.user_id;
     const cities = await getCities(userIdInput);
     if (cities) {
       const formattedCities = cities.map((item: any, i: number) => {

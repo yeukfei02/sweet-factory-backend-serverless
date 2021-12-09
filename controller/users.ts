@@ -48,8 +48,15 @@ export const loginControllerFunc = async (parent: any, args: any, context: any, 
         response = {
           message: 'login error, wrong password',
           token: '',
+          user_id: 0,
         };
       }
+    } else {
+      response = {
+        message: 'login error, no this user',
+        token: '',
+        user_id: 0,
+      };
     }
   }
 

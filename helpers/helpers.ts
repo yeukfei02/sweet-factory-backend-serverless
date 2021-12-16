@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+
 export const validateJwtToken = (token: string): string => {
   let errorMessage = '';
 

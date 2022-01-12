@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/yeukfei02/sweet-factory-backend-serverless/compare/v0.1.6...v0.1.7) (2022-01-12)
+
+
+### Features
+
+* 🎸 update sls lib and use arm64 arch ([e8a2f6f](https://github.com/yeukfei02/sweet-factory-backend-serverless/commit/e8a2f6f3e9777f382e0370012a045bc769b17ca3))
+
+
+### Bug Fixes
+
+* 🐛 fix helper ([188db72](https://github.com/yeukfei02/sweet-factory-backend-serverless/commit/188db724d3cac7d128062ff0531a0ae894eb7652))
+* 🐛 fix login resposne ([dcb8a1c](https://github.com/yeukfei02/sweet-factory-backend-serverless/commit/dcb8a1cae5c956a7d33a589ab718f5b4be114bce))
+* 🐛 fix wrong var ([b60edba](https://github.com/yeukfei02/sweet-factory-backend-serverless/commit/b60edba4fadadc97e0ec1861f793cd52f19750c8))
+
 ### [0.1.6](https://github.com/yeukfei02/sweet-factory-backend-serverless/compare/v0.1.5...v0.1.6) (2021-12-08)
 
 ### [0.1.5](https://github.com/yeukfei02/sweet-factory-backend-serverless/compare/v0.1.4...v0.1.5) (2021-12-08)

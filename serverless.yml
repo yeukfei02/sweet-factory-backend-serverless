@@ -33,7 +33,7 @@ provider:
     shouldStartNameWithService: true
     description: sweet factory backend serverless
   lambdaHashingVersion: 20201221
-  architecture: arm64
+  # architecture: arm64
   timeout: 30
 
 functions:

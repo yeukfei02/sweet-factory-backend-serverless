@@ -50,11 +50,5 @@ functions:
           cors: true
 
 plugins:
-  - serverless-prune-plugin
   - serverless-plugin-typescript
   - serverless-offline
-
-custom:
-  prune:
-    automatic: true
-    number: 3

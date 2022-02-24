@@ -28,8 +28,12 @@ model cities {
   machines   machines[]
   products   products[]
 
-  @@index([user_id], name: "fk_rails_34332fe7ca")
-  @@index([zone_id], name: "fk_rails_f8d2792419")
+  @@index([area], name: "index_cities_on_area")
+  @@index([city_name], name: "index_cities_on_city_name")
+  @@index([created_at], name: "index_cities_on_created_at")
+  @@index([updated_at], name: "index_cities_on_updated_at")
+  @@index([user_id], name: "index_cities_on_user_id")
+  @@index([zone_id], name: "index_cities_on_zone_id")
 }
 
 model machines {
@@ -44,8 +48,12 @@ model machines {
   users         users?     @relation(fields: [user_id], references: [id])
   products      products[]
 
-  @@index([city_id], name: "fk_rails_d74b7fc4ce")
-  @@index([user_id], name: "fk_rails_f7c8eaf040")
+  @@index([city_id], name: "index_machines_on_city_id")
+  @@index([created_at], name: "index_machines_on_created_at")
+  @@index([machine_name], name: "index_machines_on_machine_name")
+  @@index([serial_number], name: "index_machines_on_serial_number")
+  @@index([updated_at], name: "index_machines_on_updated_at")
+  @@index([user_id], name: "index_machines_on_user_id")
 }
 
 model products {
@@ -63,9 +71,15 @@ model products {
   machines            machines? @relation(fields: [machine_id], references: [id])
   users               users?    @relation(fields: [user_id], references: [id])
 
-  @@index([city_id], name: "fk_rails_391685e1f6")
-  @@index([machine_id], name: "fk_rails_87758910ea")
-  @@index([user_id], name: "fk_rails_dee2631783")
+  @@index([city_id], name: "index_products_on_city_id")
+  @@index([created_at], name: "index_products_on_created_at")
+  @@index([machine_id], name: "index_products_on_machine_id")
+  @@index([price], name: "index_products_on_price")
+  @@index([product_description], name: "index_products_on_product_description")
+  @@index([product_name], name: "index_products_on_product_name")
+  @@index([quantity], name: "index_products_on_quantity")
+  @@index([updated_at], name: "index_products_on_updated_at")
+  @@index([user_id], name: "index_products_on_user_id")
 }
 
 model schema_migrations {
@@ -82,6 +96,11 @@ model users {
   machines   machines[]
   products   products[]
   zones      zones[]
+
+  @@index([created_at], name: "index_users_on_created_at")
+  @@index([email], name: "index_users_on_email")
+  @@index([password], name: "index_users_on_password")
+  @@index([updated_at], name: "index_users_on_updated_at")
 }
 
 model zones {
@@ -93,5 +112,8 @@ model zones {
   users      users?   @relation(fields: [user_id], references: [id])
   cities     cities[]
 
-  @@index([user_id], name: "fk_rails_36b0b64bdb")
+  @@index([created_at], name: "index_zones_on_created_at")
+  @@index([updated_at], name: "index_zones_on_updated_at")
+  @@index([user_id], name: "index_zones_on_user_id")
+  @@index([zone_name], name: "index_zones_on_zone_name")
 }

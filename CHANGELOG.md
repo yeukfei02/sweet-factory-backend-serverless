@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/yeukfei02/sweet-factory-backend-serverless/compare/v0.1.8...v0.1.9) (2022-02-24)
+
+
+### Bug Fixes
+
+* 🐛 update schema.prisma ([bd1778e](https://github.com/yeukfei02/sweet-factory-backend-serverless/commit/bd1778e022783efc8a337aa00440a50c2d3c1966))
+
 ### [0.1.8](https://github.com/yeukfei02/sweet-factory-backend-serverless/compare/v0.1.7...v0.1.8) (2022-01-31)
 
 
